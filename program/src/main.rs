@@ -21,12 +21,19 @@ pub fn main() {
     let n = sp1_zkvm::io::read::<u32>();
     let algorithm = sp1_zkvm::io::read::<String>();
 
+    // Security consideration: always validate inputs in the guest program!
+    // Prevent DoS attacks by limiting the input size.
+    if n > 50 {
+        panic!("We don't like DoS attacks here. Pick n <= 50");
+    }
+
+    // Prevent exploits from invalid parameters.
     let function = match algorithm.as_str() {
         "iterative" => fibonacci_iterative,
         "recursive" => fibonacci_recursive,
         "memoization" => fibonacci_recursive_with_memoization,
         "matrix" => fibonacci_with_matrix,
-        _ => panic!("Invalid algorithm"),
+        _ => panic!("Invalid algorithm. Nice try!"),
     };
 
     let (a, b) = function(n);
