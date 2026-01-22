@@ -25,6 +25,8 @@ cargo run --release -- --prove
 
 ## Results
 
+NOTEL All tests were run on an M2 Pro in CPU mode.
+
 ### Performance Comparison (n=20)
 
 ### Iterative Approach
@@ -86,7 +88,6 @@ Successfully verified proof!
 ### Recursive Approach with Memoization
 
 ```txt
-2026-01-22T08:01:45.012897Z  WARN SP1_PROVER environment variable not set, defaulting to 'cpu'
 n: 20
 algorithm: memoization
 2026-01-22T08:01:47.992814Z  INFO execute: clk = 0 pc = 0x20281c
